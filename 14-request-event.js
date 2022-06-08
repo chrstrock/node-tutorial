@@ -1,15 +1,13 @@
-const EventEmitter = require('events');
+//Using Event Emitter API
+const http = require('http')
 
-const customEmitter = new EventEmitter()
-
-
-customEmitter.on('response', (name, id) => {
-    console.log(`data received ${name} with id: ${id}`)
+//Using Event Emitter API
+const server = http.createServer()
+//emits request event
+// subscribe to it / listen for it / respond to it.
+server.on('request', (req, res) =>{
+    res.end('Welcome')
 })
 
-customEmitter.on('response', () => {
-    console.log(`some other logic here `)
-})
-customEmitter.emit('response', 'john', 34)
-
+server.listen(5000)
 
